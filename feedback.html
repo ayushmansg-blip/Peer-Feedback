@@ -2,40 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Give Feedback – Pulse 360</title>
+  <title>Give Feedback</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="container">
-    <h1>Pulse 360</h1>
-    <p class="subtitle">Give Peer Feedback</p>
+    <h1>Give Peer Feedback</h1>
+    <p class="subtitle">All feedback is anonymous</p>
 
     <div class="card">
-      <p><strong>Select Team</strong></p>
-      <p>Choose a colleague</p>
+      <form id="feedbackForm">
 
-      <p><strong>Rate the following parameters</strong></p>
+        <label>Collaboration (1–5)</label>
+        <input type="number" min="1" max="5" required>
 
-      <p>Collaboration</p>
-      <p>😡 😐 🙂 😀 😍</p>
+        <label>Communication (1–5)</label>
+        <input type="number" min="1" max="5" required>
 
-      <p>Communication</p>
-      <p>😡 😐 🙂 😀 😍</p>
+        <label>Reliability (1–5)</label>
+        <input type="number" min="1" max="5" required>
 
-      <p>Reliability</p>
-      <p>😡 😐 🙂 😀 😍</p>
+        <label>Initiative (1–5)</label>
+        <input type="number" min="1" max="5" required>
 
-      <p>Initiative</p>
-      <p>😡 😐 🙂 😀 😍</p>
+        <label>Short Comment</label>
+        <textarea rows="3"></textarea>
 
-      <p><strong>Add a short comment</strong></p>
-      <p>[ Comment box ]</p>
-
-      <a href="summary.html" class="btn">Send Feedback</a>
-      <p class="subtitle">Feedback is submitted anonymously</p>
+        <button type="submit" class="btn">Send Feedback</button>
+      </form>
     </div>
   </div>
 
+  <script src="script.js"></script>
 </body>
 </html>
