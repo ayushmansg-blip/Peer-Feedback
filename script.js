@@ -1,26 +1,34 @@
-// Save feedback
-function submitFeedback() {
-  const feedback = {
-    collaboration: document.getElementById("collaboration").value,
-    communication: document.getElementById("communication").value,
-    reliability: document.getElementById("reliability").value,
-    initiative: document.getElementById("initiative").value,
-    comment: document.getElementById("comment").value
-  };
+document.addEventListener("DOMContentLoaded", () => {
 
-  localStorage.setItem("peerFeedback", JSON.stringify(feedback));
-  alert("Feedback submitted anonymously!");
-  window.location.href = "summary.html";
-}
+  const form = document.getElementById("feedbackForm");
 
-// Load feedback summary
-function loadSummary() {
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const inputs = form.querySelectorAll("input, textarea");
+
+      const feedbackData = {
+        collaboration: inputs[0].value,
+        communication: inputs[1].value,
+        reliability: inputs[2].value,
+        initiative: inputs[3].value,
+        comment: inputs[4].value
+      };
+
+      localStorage.setItem("peerFeedback", JSON.stringify(feedbackData));
+      window.location.href = "summary.html";
+    });
+  }
+
   const data = JSON.parse(localStorage.getItem("peerFeedback"));
-  if (!data) return;
 
-  document.getElementById("sum-collab").innerText = data.collaboration;
-  document.getElementById("sum-comm").innerText = data.communication;
-  document.getElementById("sum-rel").innerText = data.reliability;
-  document.getElementById("sum-init").innerText = data.initiative;
-  document.getElementById("sum-comment").innerText = data.comment;
-}
+  if (data && document.getElementById("collaboration")) {
+    document.getElementById("collaboration").innerText = data.collaboration;
+    document.getElementById("communication").innerText = data.communication;
+    document.getElementById("reliability").innerText = data.reliability;
+    document.getElementById("initiative").innerText = data.initiative;
+    document.getElementById("comment").innerText = data.comment || "—";
+  }
+
+});
